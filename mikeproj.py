@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Sep 10 19:23:07 2020
-@author: Paul
+@author: Paul Payumo, Deric Abril, Mike Lin, Ryan Gallardo
 """
-#1123724
 
-#EE104 Project (Password Generator)
+#EE104 Project (Password Project)
 from random import randint
 import linecache
 import sys
@@ -85,7 +84,7 @@ def createPassword():
     return(finalPass)
 
 def storeVaultIntoMatrix():
-    #myList = []  #Including this here causes myList to be empty at the start of program
+    Global.myList = []  #Including this here causes myList to be empty at the start of program
     f = open("./Vault.txt")
     with f as file:
         for line in file:
@@ -118,6 +117,7 @@ def whatToDo():
     print("Input '2' for Generate Password")
     print("Input '3' for Search for Password")
     print("Input '4' for Create New Credentials")
+    print("Input '5' to logout")
     choice = input("What would you like to do? ")
     if(choice == "1"):
         changeVaultCredentials()
@@ -127,8 +127,12 @@ def whatToDo():
         search()
     elif(choice == "4"):
         storeCredentialIntoVault()
+    elif(choice == "5"):
+        print("\nLogging out...\n")
+        main()
     else:
         whatToDo()
+    
 
 def main():
     correct = False
